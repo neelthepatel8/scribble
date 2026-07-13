@@ -1,32 +1,29 @@
-import React from 'react'
-import './App.css'
-import bgImage from'./assets/scribble-bg.png'
-import Title from './components/Title'
+import React from "react";
+import "./App.css";
+import Title from "./components/Title";
+import GuessBar from "./components/GuessBar";
+import Chat from "./components/Chat";
+import GameBoard from "./components/GameBoard";
+import Leaderboard from "./components/Leaderboard";
 
 function App() {
-
   return (
-    <div 
-      className='appContainer'
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        width: '100%',
-      }}
-    >
-      
-        <Title icon="src/assets/skribble-title.png"/>
-      <div 
-        className='gameContainer'
-      >
-        {/* <Title icon="src/assets/skribble-title.png"/> */}
+    <div className="appContainer">
+      <Title icon="src/assets/skribble-title.png" />
+
+      <div className="gameContainer">
+        <GuessBar children="" />
+        
+        <div className="gridContainer">
+        <Leaderboard children=""/>
+        <GameBoard children=""/>
+        <div className="chatParent">
+          <Chat children="" />
+        </div>
+        </div>
       </div>
-      
-      
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,0 +1,9 @@
+.chatContainer{
+    /* width: 250px;   */   
+    height: 75vh;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-end;
+}

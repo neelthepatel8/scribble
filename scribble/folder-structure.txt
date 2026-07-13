@@ -1,0 +1,33 @@
+.
+├── .python-version
+├── .ruff_cache
+│   ├── .gitignore
+│   ├── 0.15.21
+│   │   └── 6192155647997284692
+│   └── CACHEDIR.TAG
+├── README.md
+├── folder-structure.txt
+├── main.py
+├── models
+│   ├── __init__.py
+│   ├── generated
+│   │   ├── scribble_types_pb2.py
+│   │   └── scribble_types_pb2.pyi
+│   ├── protos
+│   │   └── scribble_types.proto
+│   └── util
+│       └── generate_models.py
+├── pyproject.toml
+├── scribble.egg-info
+│   ├── PKG-INFO
+│   ├── SOURCES.txt
+│   ├── dependency_links.txt
+│   ├── entry_points.txt
+│   ├── requires.txt
+│   └── top_level.txt
+├── scripts
+│   ├── __init__.py
+│   └── dev.py
+└── uv.lock
+
+9 directories, 22 files

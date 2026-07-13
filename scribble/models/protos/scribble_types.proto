@@ -1,0 +1,42 @@
+edition = "2023";
+
+message Player {
+  int32  uuid              = 4;
+  string username          = 1;
+  int32  currentGamePoints = 2;
+  string iconUrl           = 3;
+}
+
+message GameStatus {
+  int32           maxRounds   = 2;
+  int32           maxTime     = 3;
+  repeated Player players     = 4;
+  RoundStatus     roundStatus = 5;
+}
+
+message RoundStatus {
+  int32           currentRound           = 7;
+  string          guessWord              = 1;
+  int32           time                   = 2;
+  string          wordProgress           = 3;
+  Player          drawingPlayer          = 4;
+  repeated Player correctGuessingPlayers = 5;
+  ChatHistory     chatHistory            = 6;
+}
+
+enum ChatType {
+  SYSTEM_NEUTRAL  = 1;
+  SYSTEM_POSITIVE = 2;
+  SYSTEM_NEGATIVE = 3;
+  PLAYER          = 4;
+}
+
+message Chat {
+  string   playerUuid    = 1; // This would be some unique id for system message types
+  string   rawMessageStr = 2;
+  ChatType type          = 3;
+}
+
+message ChatHistory {
+  repeated Chat chats = 1;
+}

@@ -1,0 +1,15 @@
+.roundTrackerParent{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px; 
+
+}
+
+
+.textParent{
+    font-size: x-large;
+    font-weight: bold;
+}

@@ -9,7 +9,7 @@ import Leaderboard from "./components/Leaderboard";
 function App() {
   return (
     <div className="appContainer">
-      <Title icon="src/assets/skribble-title.png" />
+      <Title icon="src/assets/logo.gif"/>
 
       <div className="gameContainer">
         <GuessBar children="" />

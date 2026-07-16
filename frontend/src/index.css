@@ -3,10 +3,9 @@
 }
 
 body {
-  background-image: url('src/assets/scribble-bg.png');
-  background-size: cover;
+  background-image: url('src/assets/skribl-bg.png');
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat:repeat;
 }
 
 h1,

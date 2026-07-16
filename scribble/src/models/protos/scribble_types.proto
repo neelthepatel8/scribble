@@ -25,10 +25,10 @@ message RoundStatus {
 }
 
 enum ChatType {
-  SYSTEM_NEUTRAL  = 1;
-  SYSTEM_POSITIVE = 2;
-  SYSTEM_NEGATIVE = 3;
-  PLAYER          = 4;
+  SYSTEM_NEUTRAL  = 0;
+  SYSTEM_POSITIVE = 1;
+  SYSTEM_NEGATIVE = 2;
+  PLAYER          = 3;
 }
 
 message Chat {
@@ -39,4 +39,18 @@ message Chat {
 
 message ChatHistory {
   repeated Chat chats = 1;
+}
+
+enum Operation {
+  GUESS_INPUT_FROM_USER = 0;
+  DRAW_INPUT_FROM_USER  = 1;
+}
+
+message WebSocketRecievedMessageData {
+  Player player = 1;
+}
+
+message WebSocketRecievedMessage {
+  Operation                    operation = 1;
+  WebSocketRecievedMessageData data      = 2;
 }

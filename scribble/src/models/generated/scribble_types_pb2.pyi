@@ -18,6 +18,7 @@ class Operation(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
     GUESS_INPUT_FROM_USER: _ClassVar[Operation]
     DRAW_INPUT_FROM_USER: _ClassVar[Operation]
+
 SYSTEM_NEUTRAL: ChatType
 SYSTEM_POSITIVE: ChatType
 SYSTEM_NEGATIVE: ChatType
@@ -35,7 +36,13 @@ class Player(_message.Message):
     username: str
     currentGamePoints: int
     iconUrl: str
-    def __init__(self, uuid: _Optional[int] = ..., username: _Optional[str] = ..., currentGamePoints: _Optional[int] = ..., iconUrl: _Optional[str] = ...) -> None: ...
+    def __init__(
+        self,
+        uuid: _Optional[int] = ...,
+        username: _Optional[str] = ...,
+        currentGamePoints: _Optional[int] = ...,
+        iconUrl: _Optional[str] = ...,
+    ) -> None: ...
 
 class GameStatus(_message.Message):
     __slots__ = ("maxRounds", "maxTime", "players", "roundStatus")
@@ -47,10 +54,24 @@ class GameStatus(_message.Message):
     maxTime: int
     players: _containers.RepeatedCompositeFieldContainer[Player]
     roundStatus: RoundStatus
-    def __init__(self, maxRounds: _Optional[int] = ..., maxTime: _Optional[int] = ..., players: _Optional[_Iterable[_Union[Player, _Mapping]]] = ..., roundStatus: _Optional[_Union[RoundStatus, _Mapping]] = ...) -> None: ...
+    def __init__(
+        self,
+        maxRounds: _Optional[int] = ...,
+        maxTime: _Optional[int] = ...,
+        players: _Optional[_Iterable[_Union[Player, _Mapping]]] = ...,
+        roundStatus: _Optional[_Union[RoundStatus, _Mapping]] = ...,
+    ) -> None: ...
 
 class RoundStatus(_message.Message):
-    __slots__ = ("currentRound", "guessWord", "time", "wordProgress", "drawingPlayer", "correctGuessingPlayers", "chatHistory")
+    __slots__ = (
+        "currentRound",
+        "guessWord",
+        "time",
+        "wordProgress",
+        "drawingPlayer",
+        "correctGuessingPlayers",
+        "chatHistory",
+    )
     CURRENTROUND_FIELD_NUMBER: _ClassVar[int]
     GUESSWORD_FIELD_NUMBER: _ClassVar[int]
     TIME_FIELD_NUMBER: _ClassVar[int]
@@ -65,7 +86,16 @@ class RoundStatus(_message.Message):
     drawingPlayer: Player
     correctGuessingPlayers: _containers.RepeatedCompositeFieldContainer[Player]
     chatHistory: ChatHistory
-    def __init__(self, currentRound: _Optional[int] = ..., guessWord: _Optional[str] = ..., time: _Optional[int] = ..., wordProgress: _Optional[str] = ..., drawingPlayer: _Optional[_Union[Player, _Mapping]] = ..., correctGuessingPlayers: _Optional[_Iterable[_Union[Player, _Mapping]]] = ..., chatHistory: _Optional[_Union[ChatHistory, _Mapping]] = ...) -> None: ...
+    def __init__(
+        self,
+        currentRound: _Optional[int] = ...,
+        guessWord: _Optional[str] = ...,
+        time: _Optional[int] = ...,
+        wordProgress: _Optional[str] = ...,
+        drawingPlayer: _Optional[_Union[Player, _Mapping]] = ...,
+        correctGuessingPlayers: _Optional[_Iterable[_Union[Player, _Mapping]]] = ...,
+        chatHistory: _Optional[_Union[ChatHistory, _Mapping]] = ...,
+    ) -> None: ...
 
 class Chat(_message.Message):
     __slots__ = ("playerUuid", "rawMessageStr", "type")
@@ -75,13 +105,20 @@ class Chat(_message.Message):
     playerUuid: str
     rawMessageStr: str
     type: ChatType
-    def __init__(self, playerUuid: _Optional[str] = ..., rawMessageStr: _Optional[str] = ..., type: _Optional[_Union[ChatType, str]] = ...) -> None: ...
+    def __init__(
+        self,
+        playerUuid: _Optional[str] = ...,
+        rawMessageStr: _Optional[str] = ...,
+        type: _Optional[_Union[ChatType, str]] = ...,
+    ) -> None: ...
 
 class ChatHistory(_message.Message):
     __slots__ = ("chats",)
     CHATS_FIELD_NUMBER: _ClassVar[int]
     chats: _containers.RepeatedCompositeFieldContainer[Chat]
-    def __init__(self, chats: _Optional[_Iterable[_Union[Chat, _Mapping]]] = ...) -> None: ...
+    def __init__(
+        self, chats: _Optional[_Iterable[_Union[Chat, _Mapping]]] = ...
+    ) -> None: ...
 
 class WebSocketRecievedMessageData(_message.Message):
     __slots__ = ("player",)
@@ -89,10 +126,33 @@ class WebSocketRecievedMessageData(_message.Message):
     player: Player
     def __init__(self, player: _Optional[_Union[Player, _Mapping]] = ...) -> None: ...
 
+class WebSocketSendMessageData(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
 class WebSocketRecievedMessage(_message.Message):
-    __slots__ = ("operation", "data")
+    __slots__ = ("message_id", "operation", "data")
+    MESSAGE_ID_FIELD_NUMBER: _ClassVar[int]
     OPERATION_FIELD_NUMBER: _ClassVar[int]
     DATA_FIELD_NUMBER: _ClassVar[int]
+    message_id: str
     operation: Operation
     data: WebSocketRecievedMessageData
-    def __init__(self, operation: _Optional[_Union[Operation, str]] = ..., data: _Optional[_Union[WebSocketRecievedMessageData, _Mapping]] = ...) -> None: ...
+    def __init__(
+        self,
+        message_id: _Optional[str] = ...,
+        operation: _Optional[_Union[Operation, str]] = ...,
+        data: _Optional[_Union[WebSocketRecievedMessageData, _Mapping]] = ...,
+    ) -> None: ...
+
+class WebSocketSendMessage(_message.Message):
+    __slots__ = ("message_id", "data")
+    MESSAGE_ID_FIELD_NUMBER: _ClassVar[int]
+    DATA_FIELD_NUMBER: _ClassVar[int]
+    message_id: str
+    data: WebSocketSendMessageData
+    def __init__(
+        self,
+        message_id: _Optional[str] = ...,
+        data: _Optional[_Union[WebSocketSendMessageData, _Mapping]] = ...,
+    ) -> None: ...

@@ -50,7 +50,16 @@ message WebSocketRecievedMessageData {
   Player player = 1;
 }
 
+message WebSocketSendMessageData {
+}
+
 message WebSocketRecievedMessage {
-  Operation                    operation = 1;
-  WebSocketRecievedMessageData data      = 2;
+  string                       message_id = 1;
+  Operation                    operation  = 2;
+  WebSocketRecievedMessageData data       = 3;
+}
+
+message WebSocketSendMessage {
+  string                   message_id = 1;
+  WebSocketSendMessageData data       = 2;
 }

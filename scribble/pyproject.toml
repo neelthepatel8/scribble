@@ -8,6 +8,7 @@ dependencies = [
     "fastapi[standard]>=0.139.0",
     "grpcio-tools>=1.82.1",
     "protobuf>=7.35.1",
+    "redis>=8.0.1",
     "ruff>=0.15.21",
     "websockets>=16.1",
 ]

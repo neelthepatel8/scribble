@@ -5,6 +5,7 @@ from models.generated.scribble_types_pb2 import (
     WebSocketSendMessage,
     WebSocketSendMessageData,
 )
+from models.generated.scribble_types_pb2 import Operation
 
 __all__ = [
     "Player",
@@ -12,4 +13,5 @@ __all__ = [
     "WebSocketRecievedMessageData",
     "WebSocketSendMessage",
     "WebSocketSendMessageData",
+    "Operation",
 ]
